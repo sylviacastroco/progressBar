@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" /> 
+<title>J.S. Paluch Bulletin Viewer. The J.S. Paluch Company is dedicated to serving Catholic parishes, religious communities, and organizations across the United States.</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/progressbootstrap1.css" >
+<link href="css/static.min.css" rel="stylesheet"/>
+<link href="demo.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="well clearfix">
+            <div class="bullHeading"> 
+                <img class="slideInDown " src="https://www.jspaluch.com/img/logo.png" /> 
+            </div>
+
+            <div class="pull-right subheading slideInLeft text-right top-cta">
+                Serving Catholic communities for more than 100 years
+            </div>
+        </div>
+
+    <div class="well bullHeader text-center">
+        <span class="glyphicon glyphicon-user" style="font-size: 15px;" aria-hidden="true"></span>
+            The following advertisers sponsor the online edition of the bulletin for Saint Casimir Church.
+        <div class="tr-down"></div>
+    </div>
+
+    <div class="alert info">
+        <span class="closebtn">&times;</span>  
+            Scroll Below To See Your Bulletin
+    </div>
+
+    <!-- Skip Advertisement button -->
+    <div class="wrapper">
+        <button class="btn btn-primary" id="subtract" alt="skip advertisement and go to bulletin" style="display: none;">Skip Advertisement</button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="container">
+    <div id="countdown"></div>
+    </div>
+
+    <!-- Photo Grid -->
+    <div class="d-flex justify-content-center outside" id="minimize">
+        <div class="d-flex justify-content-center flex-wrap mx-auto bullrow">
+            <div class="d-flex justify-content-center bullcolumn" >
+                <img src="./img/429882.jpg" alt="Advertisement">
+                <img src="./img/1153793.jpg" alt="Advertisement">
+                <img src="./img/1307536.jpg" alt="Advertisement">
+                <img src="./img/1308736.jpg" alt="Advertisement">
+            </div>
+        </div>
+    </div>
+
+    <!-- Bulletins -->
+    <div class="row">
+        <div class="col-md-12 hidden-sm hidden-xs cta">
+            <div class="well bullHeader text-center">
+                <img src="https://www.e-churchbulletins.com/img/pdfIcn.png" alt="Bulletin" /> Bulletin for Saint Casimir Church
+                <div class="tr-down"></div>
+            </div>
+            <div class="cta hidden-sm hidden-xs">
+                <!-- Make the entire call to action a link - users can click on the entire line -->
+                    <a href="https://www.e-churchbulletins.com/bulletins/000123.pdf" target="_blank"> <span class="openlink" style="text-transform:uppercase; letter-spacing: .5px; font-weight: bold; color:black;">Click <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>  to open your bulletin in a new window</span>
+                <object data="https://www.e-churchbulletins.com/bulletins/000123.pdf" title="bulletin" type="application/pdf"></object></a>
+            </div>
+        </div>
+
+        <div class="container-sml hidden-lg hidden-md">
+            <div class="panel panel-default m-5">
+                <div class="panel-heading">Bulletin for Saint Casimir Church</div>
+                <div class="panel-body">
+                    <img src="https://www.jspupload.com/Pages/CoverPages/000123.png" alt="Bulletin" class="img-thumbnail" />
+                    <a href="https://www.e-churchbulletins.com/bulletins/000123.pdf" class="btn btn-primary">View Bulletin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main footer -->
+    <footer class="text-center">
+            3708 River Road, Suite 400, Franklin Park, IL, 60131
+            <a href="https://www.jspaluch.com" class="footer-logo">www.jspaluch.com </a> 
+             1-800-621-5197 <br>
+    </footer>
+</div>
+
+
+<script src="js/jquery.progressBarTimer.js"></script>
+<script>
+// Alert before the skip advertisement button
+var close = document.getElementsByClassName("closebtn");
+var i;
+for (i = 0; i < close.length; i++) {
+close[i].onclick = function(){
+$('.info').fadeToggle("slow");
+var div = this.parentElement;
+div.style.opacity = "0";
+setTimeout(function(){ div.style.display = "none"; }, 1000);
+}
+};
+
+// Button toggle container with ads
+$('#subtract').on('click', function(){
+$('#minimize').slideToggle("slow");
+});
+
+// Button change text on click
+$('#subtract').click(function(){
+var $this = $(this);
+$this.toggleClass('#minimize');
+if($this.hasClass('#minimize')){
+    $this.text('See Advertisement');         
+} else {
+    $this.text('Skip Advertisement');
+}
+});
+
+// Toggle between progress bar and ad button
+$("#subtract").hide();
+setTimeout(function(){
+$(".progress").toggle();
+},5000);
+
+// Toggle fade button back in after 5 seconds
+$('#subtract').delay(5000).fadeToggle("slow", "swing");
+
+
+// plugin to animate progress bar
+$("#countdown").progressBarTimer({
+  timeLimit: 5,
+  autostart: true,
+  smooth: true, // smooth timer
+  label : {
+      show: true,
+      type: 'seconds'
+  }
+}).start()
+
+
+</script>
+</body>
+</html>
